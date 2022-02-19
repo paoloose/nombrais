@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D61E8505-B0C9-094C-6DE2-A4705200A176}</ProjectGuid>
+    <ProjectGuid>{B570E0E1-5508-C97D-CD71-EAE8966089A4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>generateName</RootNamespace>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
@@ -140,7 +140,7 @@
     <ClCompile Include="..\services\generateName.cc">
       <ObjectFileName>$(IntDir)\services\generateName.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="C:\Users\famil\Desktop\Dev\Codes\backend\Playground\node-playground\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
+    <ClCompile Include="C:\Users\famil\Desktop\Dev\Codes\backend\nombrais-api\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
   <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>

@@ -630,6 +630,8 @@ namespace generateName {
         // Parsing data returned from std::string to char array (is required)
         char* name_parsed = const_cast<char*>(name.c_str());
 
+        cout << "From c++: " << name << endl;
+
         args.GetReturnValue().Set(String::NewFromUtf8(isolate, name_parsed).ToLocalChecked());
     }
 

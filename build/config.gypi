@@ -350,7 +350,7 @@
     "globalconfig": "C:\\Users\\famil\\AppData\\Roaming\\npm\\etc\\npmrc",
     "global_prefix": "C:\\Users\\famil\\AppData\\Roaming\\npm",
     "init_module": "C:\\Users\\famil\\.npm-init.js",
-    "local_prefix": "C:\\Users\\famil\\Desktop\\Dev\\Codes\\backend\\Playground\\node-playground",
+    "local_prefix": "C:\\Users\\famil\\Desktop\\Dev\\Codes\\backend\\nombrais-api",
     "metrics_registry": "https://registry.npmjs.org/",
     "node_gyp": "C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js",
     "prefix": "C:\\Users\\famil\\AppData\\Roaming\\npm",
