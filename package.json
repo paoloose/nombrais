@@ -1,0 +1,25 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "lefloresfisi's node playground",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "configure-gyp": "node-gyp configure",
+    "build-gyp": "node-gyp build",
+    "lint": "eslint .",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "nodemon": "2.0.15"
+  },
+  "dependencies": {
+    "express": "4.17.3",
+    "node-gyp": "^8.4.1",
+    "serve-favicon": "^2.5.0"
+  }
+}
