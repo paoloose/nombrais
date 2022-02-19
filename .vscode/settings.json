@@ -4,6 +4,7 @@
     "linebreak",
     "Nicol",
     "nodeapp",
+    "Nombrais",
     "paolo",
     "randomname"
   ],
@@ -62,7 +63,11 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
-    ".vscode": true
+    ".vscode": true,
+    ".eslintrc.js": true,
+    "binding.gyp": true,
+    ".gitignore": false,
+    "node_modules": true
   },
   "explorerExclude.backup": null
 }

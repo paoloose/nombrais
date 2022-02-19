@@ -1,48 +1,31 @@
-const http = require('http');
-const NODE_PORT = 3000;
 const express = require('express');
 const favicon = require('serve-favicon');
 const path = require('path');
 const EXPRESS_PORT = 3001;
 
-// 🟢 with node js ----->
-
-const nodeapp = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-type': 'text/html' });
-  res.end('body {color: red}');
-  console.log('Node server running on port', NODE_PORT);
-});
-nodeapp.listen(NODE_PORT);
-
-// ⚪ with express js ---->
+// ⚪ express js ---->
 const app = express();
 const generator = require('./build/Release/generateName')
-
-const database = [
-  {
-    seed: '10101',
-    name: 'nicol',
-  },
-  {
-    seed: '10010',
-    name: 'paolo',
-  },
-  {
-    seed: '10100',
-    name: 'lucia',
-  },
-];
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // Home
 app.get('/', (req, res) => {
+  let name_example = generator.generateName(3, 6, '')
+  let object_example = `
+  {
+    seed: ${generator.getSeedFormat(name_example)},
+    name: ${name_example}
+  }
+  `
   res.send(`
-    <h1>Welcome to our API</h1>
-    <div>We are glad to see you here!</div><br>
-    <div>Information example: <pre style='word-wrap: break-word; white-space: pre-wrap;'>${JSON.stringify(
-      database
-    )}</pre></div>
+    <div style="display: flex;flex-direction: column;align-items: center;">
+      <h1>Welcome to the Nombrais API</h1>
+      <div>We are glad to see you here!</div><br>
+      <div>Request example:</div>
+      <pre style='word-wrap: break-word; white-space: pre-wrap;'>${object_example}</pre>
+      <div>Visit us on <a href="https://github.com/leflores-fisi/nombrais" target="__BLANK">github</a></div>
+    </div>
   `);
 });
 
