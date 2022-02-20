@@ -10,10 +10,11 @@
     "lint": "eslint .",
     "start": "node index.js",
     "deploy-heroku": "heroku git:remote -a nombrais",
+    "config-heroku": "heroku config:set NODE_MODULES_CACHE=false",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "leflores-fisi",
+  "license": "MIT",
   "devDependencies": {
     "eslint": "8.9.0",
     "nodemon": "2.0.15"
@@ -24,5 +25,9 @@
     "heroku": "^7.59.2",
     "node-gyp": "8.4.1",
     "serve-favicon": "2.5.0"
+  },
+  "engines": {
+    "node": "16.x"
   }
+
 }
