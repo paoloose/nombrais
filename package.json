@@ -9,6 +9,7 @@
     "build-gyp": "node-gyp build",
     "lint": "eslint .",
     "start": "node index.js",
+    "deploy-heroku": "heroku git:remote -a nombrais",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -20,6 +21,7 @@
   "dependencies": {
     "cors": "2.8.5",
     "express": "4.17.3",
+    "heroku": "^7.59.2",
     "node-gyp": "8.4.1",
     "serve-favicon": "2.5.0"
   }
