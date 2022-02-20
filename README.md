@@ -5,7 +5,7 @@
 #### Examples:
 ### Option 1
 ```js
-fetch('http://localhost:3001/api/v1.0/names?quantity=2&length=5')
+fetch('https://nombrais.herokuapp.com/api/v1.0/names?quantity=2&length=5')
   .then(response => response.json())
   .then(names => console.log(names));
 
@@ -27,7 +27,7 @@ Outputs 👇
 
 ### Option 2
 ```js
-fetch('http://localhost:3001/api/v1.0/names?quantity=2&min_length=3&max_length=5')
+fetch('https://nombrais.herokuapp.com/api/v1.0/names?quantity=2&min_length=3&max_length=5')
   .then(response => response.json())
   .then(names => console.log(names));
 
@@ -49,7 +49,7 @@ Outputs 👇
 
 ### Option 3
 ```js
-fetch('http://localhost:3001/api/v1.0/names?quantity=2&seed=1010111')
+fetch('https://nombrais.herokuapp.com/api/v1.0/names?quantity=2&seed=1010111')
   .then(response => response.json())
   .then(names => console.log(names));
 
