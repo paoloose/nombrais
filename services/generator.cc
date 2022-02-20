@@ -46,10 +46,6 @@ class Letter{
     public:
     friend class Generator;
 
-    virtual char Type(){
-        throw -1;
-    }
-
     Letter(){}
 
     Letter(char letter){
