@@ -36,6 +36,7 @@ app.get('/', (req, res) => {
       <div>✨ Simple customizable random names generator REST API ✨</div><br>
       <pre style='word-wrap: break-word; white-space: pre-wrap;'><code>${object_example}</code></pre>
       <div>Visit our <a href="https://github.com/leflores-fisi/nombrais" target="__BLANK">github repository</a> for documentation</div>
+      <div>Or make a <a href="https://nombrais.herokuapp.com/api/names?quantity=2&length=5" target="__BLANK">quick request</a></div>
     </div>
   `);
 });
@@ -77,7 +78,7 @@ const GET_NAMES = {
     return random_names;
   }
 };
-app.get('/api/v1.0/names', (req, res) => {
+app.get('/api/names', (req, res) => {
 
   let isBadRequest = false;
   let random_names = [];

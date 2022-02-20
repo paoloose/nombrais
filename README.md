@@ -6,7 +6,7 @@
 ### Option 1
 Given the `quantity` and the names `length`
 ```js
-fetch('https://nombrais.herokuapp.com/api/v1.0/names?quantity=2&length=5')
+fetch('https://nombrais.herokuapp.com/api/names?quantity=2&length=5')
   .then(response => response.json())
   .then(names => console.log(names));
 
@@ -29,7 +29,7 @@ Outputs 👇
 ### Option 2
 Given the `quantity` and the `min` and `max` length (random length in that range)
 ```js
-fetch('https://nombrais.herokuapp.com/api/v1.0/names?quantity=2&min_length=3&max_length=5')
+fetch('https://nombrais.herokuapp.com/api/names?quantity=2&min_length=3&max_length=5')
   .then(response => response.json())
   .then(names => console.log(names));
 
@@ -52,7 +52,7 @@ Outputs 👇
 ### Option 3
 Given the `quantity` and a `seed` formatted as binary (0 for vowel, 1 for consonant)
 ```js
-fetch('https://nombrais.herokuapp.com/api/v1.0/names?quantity=2&seed=1010111')
+fetch('https://nombrais.herokuapp.com/api/names?quantity=2&seed=1010111')
   .then(response => response.json())
   .then(names => console.log(names));
 
