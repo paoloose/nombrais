@@ -16,8 +16,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // Logged information
 app.use((req, res, next) => {
-  console.log(`Request '${req.method}' received at PORT: ${req.socket.remotePort},`);
-  console.log(` for ${req.path}`);
+  console.log(`Request '${req.method}' received at PORT: ${req.socket.remotePort} for ${req.path}`);
   next();
 })
 
@@ -25,18 +24,18 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
   let name_example = generator.generateName(4, 7, '');
   let object_example = `
-  {
-    seed: ${generator.getSeedFormat(name_example)},
-    name: ${name_example}
-  }
+{
+  seed: ${generator.getSeedFormat(name_example)},
+  name: ${name_example}
+}
   `;
   res.send(`
     <div style="display: flex;flex-direction: column;align-items: center;font-size: 20px;padding:20px">
       <h1>Welcome to Nombrais API</h1>
       <div>✨ Simple customizable random names generator REST API ✨</div><br>
-      <pre style='word-wrap: break-word; white-space: pre-wrap;'><code>${object_example}</code></pre>
-      <div>Visit our <a href="https://github.com/leflores-fisi/nombrais" target="__BLANK">github repository</a> for documentation</div>
-      <div>Or make a <a href="https://nombrais.herokuapp.com/api/names?quantity=2&length=5" target="__BLANK">quick request</a></div>
+      <pre style='word-wrap:break-word;white-space:pre-wrap;background-color:#EDECEF;padding:0 25px;border-radius:5px'><code>${object_example}</code></pre>
+      <div>Visit our <a href="https://github.com/leflores-fisi/nombrais" target="__BLANK">github repository</a> for examples</div>
+      <div>or make a <a href="https://nombrais.herokuapp.com/api/names?quantity=10&min_length=3&max_length=6" target="__BLANK">quick request</a>.</div>
     </div>
   `);
 });
@@ -84,7 +83,7 @@ app.get('/api/names', (req, res) => {
   let random_names = [];
   const {quantity, seed, min_length, max_length, length, capitalized} = req.query
 
-  if (isNaN(quantity) || (quantity < 1 || quantity > 100)) isBadRequest = true;
+  if (isNaN(quantity) || (quantity < 1 || quantity > 150)) isBadRequest = true;
 
   // Names request [option 1]
   if ((quantity && length) && (min_length === undefined && max_length == undefined && seed === undefined)) {
@@ -132,4 +131,4 @@ app.use((req, res) => {
 
 // Running app
 app.listen(EXPRESS_PORT);
-console.log('Node server running on port', EXPRESS_PORT);
+console.log('Server running on port', EXPRESS_PORT);
