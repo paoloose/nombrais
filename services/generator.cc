@@ -76,32 +76,32 @@ class Letter{
     virtual char GenerateRandomByFrequency(){
         float probability = rand_int(0, 100000) / 1000.0f;
 
-        if(probability < 0.074) return 'z';
-        else if(probability < 0.169) return 'q';
-        else if(probability < 0.319) return 'x';
-        else if(probability < 0.469) return 'j';
-        else if(probability < 1.239) return 'k';
-        else if(probability < 2.219) return 'v';
-        else if(probability < 3.719) return 'b';
-        else if(probability < 5.619) return 'p';
-        else if(probability < 7.619) return 'y';
-        else if(probability < 9.619) return 'g';
-        else if(probability < 11.819) return 'f';
-        else if(probability < 14.219) return 'w';
-        else if(probability < 16.619) return 'm';
-        else if(probability < 19.419) return 'c';
-        else if(probability < 22.219) return 'u';
-        else if(probability < 26.219) return 'l';
-        else if(probability < 30.519) return 'd';
-        else if(probability < 36.519) return 'r';
-        else if(probability < 42.619) return 'h';
-        else if(probability < 48.919) return 's';
-        else if(probability < 55.619) return 'n';
-        else if(probability < 62.619) return 'i';
-        else if(probability < 70.119) return 'o';
-        else if(probability < 78.319) return 'a';
-        else if(probability < 87.419) return 't';
-        else if(probability < 100) return 'e';
+        if     (probability  <  0.074) return 'z';
+        else if (probability <  0.169) return 'q';
+        else if (probability <  0.319) return 'x';
+        else if (probability <  0.469) return 'j';
+        else if (probability <  1.239) return 'k';
+        else if (probability <  2.219) return 'v';
+        else if (probability <  3.719) return 'b';
+        else if (probability <  5.619) return 'p';
+        else if (probability <  7.619) return 'y';
+        else if (probability <  9.619) return 'g';
+        else if (probability < 11.819) return 'f';
+        else if (probability < 14.219) return 'w';
+        else if (probability < 16.619) return 'm';
+        else if (probability < 19.419) return 'c';
+        else if (probability < 22.219) return 'u';
+        else if (probability < 26.219) return 'l';
+        else if (probability < 30.519) return 'd';
+        else if (probability < 36.519) return 'r';
+        else if (probability < 42.619) return 'h';
+        else if (probability < 48.919) return 's';
+        else if (probability < 55.619) return 'n';
+        else if (probability < 62.619) return 'i';
+        else if (probability < 70.119) return 'o';
+        else if (probability < 78.319) return 'a';
+        else if (probability < 87.419) return 't';
+        else if (probability < 100)    return 'e';
         else return '\0';
 
         /*
@@ -190,27 +190,27 @@ class Consonant: public Letter{
     char GenerateRandomByFrequency(){
         float probability = rand_int(0, 100000) / 1000.0f;
 
-        if(probability < 0.119) return 'z';
-        else if(probability < 0.272) return 'q';
-        else if(probability < 0.514) return 'x';
-        else if(probability < 0.756) return 'j';
-        else if(probability < 1.999) return 'k';
-        else if(probability < 3.582) return 'v';
-        else if(probability < 6.005) return 'b';
-        else if(probability < 9.074) return 'p';
-        else if(probability < 12.304) return 'y';
-        else if(probability < 15.534) return 'g';
-        else if(probability < 19.087) return 'f';
-        else if(probability < 22.963) return 'w';
-        else if(probability < 26.839) return 'm';
-        else if(probability < 31.361) return 'c';
-        else if(probability < 37.821) return 'l';
-        else if(probability < 44.766) return 'd';
-        else if(probability < 54.456) return 'r';
-        else if(probability < 64.307) return 'h';
-        else if(probability < 74.480) return 's';
-        else if(probability < 85.300) return 'n';
-        else if(probability < 100) return 't';
+        if      (probability <  0.119) return 'z';
+        else if (probability <  0.272) return 'q';
+        else if (probability <  0.514) return 'x';
+        else if (probability <  0.756) return 'j';
+        else if (probability <  1.999) return 'k';
+        else if (probability <  3.582) return 'v';
+        else if (probability <  6.005) return 'b';
+        else if (probability <  9.074) return 'p';
+        else if (probability < 12.304) return 'y';
+        else if (probability < 15.534) return 'g';
+        else if (probability < 19.087) return 'f';
+        else if (probability < 22.963) return 'w';
+        else if (probability < 26.839) return 'm';
+        else if (probability < 31.361) return 'c';
+        else if (probability < 37.821) return 'l';
+        else if (probability < 44.766) return 'd';
+        else if (probability < 54.456) return 'r';
+        else if (probability < 64.307) return 'h';
+        else if (probability < 74.480) return 's';
+        else if (probability < 85.300) return 'n';
+        else if (probability < 100)    return 't';
         else return 0;
     }
 
@@ -255,11 +255,11 @@ class Vowel: public Letter{
     char GenerateRandomByFrequency(){
         float probability = rand_int(0, 100000) / 1000.0f;
 
-        if(probability < 7.271) return 'u';
-        else if(probability < 25.451) return 'i';
-        else if(probability < 44.929) return 'o';
-        else if(probability < 66.224) return 'a';
-        else if(probability < 100) return 'e';
+        if      (probability <  7.271) return 'u';
+        else if (probability < 25.451) return 'i';
+        else if (probability < 44.929) return 'o';
+        else if (probability < 66.224) return 'a';
+        else if (probability < 100)    return 'e';
         else return 0;
     }
 
@@ -286,7 +286,7 @@ class Generator{
     char favorite_letters[11] = {'a', 'e', 'n', 'i', 'l', 'r', 'o', 's', 'h', 'c', 'm'};
     char letters_to_end[5] = {'n', 'e', 'a', 'y', 'l'};
 
-    // Obtiene la semilla de un string
+    // Obtains the seed from an string
     std::string GetSeedFormat(std::string name){
         std::string seed_format;
         for (char i : name) {
@@ -300,7 +300,7 @@ class Generator{
         return seed_format;
     }
 
-    // Genera un string semilla a partir de una longitud
+    // Generates an string that is the vowel-consonant format of the given string
     std::string GenerateRandomSeed(int length, std::string start_format = std::string()){
 
         std::string random_seed;
@@ -413,13 +413,9 @@ class Generator{
 
         name_length = (rand_int(0, max_length - min_length)) + min_length;
 
-        start[0] = toupper(start[0]);
-
         random_seed = GenerateRandomSeed(name_length, GetSeedFormat(start));
 
         random_name = GenerateRandomNameFromSeed(random_seed);
-        random_name[0] = toupper(random_name[0]);
-
 
         if(start.empty()) return random_name;
         else return start + random_name.substr(start.length());
