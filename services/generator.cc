@@ -165,7 +165,6 @@ class Consonant: public Letter{
             this->value = newValue;
         else{
             cout << "Error: the value '" << newValue << "' is not allowed to be a consonant" << endl;
-            throw -1;
         }
     }
 
@@ -240,7 +239,6 @@ class Vowel: public Letter{
             this->value = newValue;
         else{
             cout << "Error: the value '" << newValue << "' is not allowed to be a vowel" << endl;
-            throw -1;
         }
     }
 
