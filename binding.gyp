@@ -1,8 +1,8 @@
 {
   "targets": [
     {
-      "target_name": "generateName",
-      "sources": ["./services/generateName.cc"]
+      "target_name": "generator",
+      "sources": ["./services/generator.cc"]
     }
   ]
 }

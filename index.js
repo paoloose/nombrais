@@ -6,12 +6,12 @@ const EXPRESS_PORT = 3001;
 // ⚪ express js ---->
 const app = express();
 const cors = require('cors')
-const generator = require('./build/Release/generateName')
+const generator = require('./build/Release/generator');
 
 app.use(cors());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-// Request information
+// Logged information
 app.use((req, res, next) => {
   console.log(`Request '${req.method}' received at PORT: ${req.socket.remotePort},`);
   console.log(` for ${req.path}`);
@@ -20,13 +20,13 @@ app.use((req, res, next) => {
 
 // Home
 app.get('/', (req, res) => {
-  let name_example = generator.generateName(3, 6, '')
+  let name_example = generator.generateName(3, 6, '');
   let object_example = `
   {
     seed: ${generator.getSeedFormat(name_example)},
     name: ${name_example}
   }
-  `
+  `;
   res.send(`
     <div style="display: flex;flex-direction: column;align-items: center;">
       <h1>Welcome to the Nombrais API</h1>
@@ -38,93 +38,75 @@ app.get('/', (req, res) => {
   `);
 });
 
-app.get('/api/generate=:num&min=:min-length&max-length=:max', (req, res) => {
 
-  // If the given argument if not a number
-  if (isNaN(req.params.num)) {
-    res.send(`
-      <div style="display: flex;flex-direction: column;align-items: center;">
-        <img src="https://http.cat/400.jpg" width="750" height="600" style="background-color: black"></img>
-        <div>Expected argument generate= to be number</div>
-      </div>
-    `);
-    res.status(400).end();
-  }
-  // If the names requests exceeds 100
-  else if (req.params.num < 1 || req.params.num > 100) {
-    res.send(`
-      <div style="display: flex;flex-direction: column;align-items: center;">
-        <img src="https://http.cat/400.jpg" width="750" height="600" style="background-color: black"></img>
-        <div>Argument quantity out of bounds</div>
-      </div>
-    `);
-    res.status(400).end();
-  }
-  else {
-
-    // Creating response the object
-    let random_names = []
-    for (let i = 0; i < req.params.num; i++) {
-      let name = generator.generateName(Number(req.params.min), Number(req.params.max), '')
+// API names requests
+const GET_NAMES = {
+  option1: (quantity, length) => {
+    let random_names = [];
+    for (let i = 0; i < quantity; i++) {
+      let name = generator.generateName(Number(length), Number(length), '');
       random_names.push({
         seed: generator.getSeedFormat(name),
         name: name
       });
     }
-    console.log('Generating names with params:', req.params);
-    res.status(200);
-    res.json(random_names);
-  }
-
-});
-
-app.get('/api/generate=:num/seed=:seed', (req, res, next) => {
-
-  // If the quantity if not a number
-  if (isNaN(req.params.num)) {
-    res.send(`
-      <div style="display: flex;flex-direction: column;align-items: center;">
-        <img src="https://http.cat/400.jpg" width="750" height="600" style="background-color: black"></img>
-        <div>Expected argument generate= to be number</div>
-      </div>
-    `);
-    res.status(400).end();
-  }
-  // If the names requests exceeds 100
-  else if (req.params.num > 100) {
-    res.send(`
-      <div style="display: flex;flex-direction: column;align-items: center;">
-        <img src="https://http.cat/400.jpg" width="750" height="600" style="background-color: black"></img>
-        <div>Argument quantity exceeds the limit (100)</div>
-      </div>
-    `);
-    res.status(400).end();
-  }
-  // If the seed contains other characters that are not binaries ('0' for vowel, '1' for consonant)
-  else if (req.params.seed.split('').filter(letter => letter !== '0' && letter !== '1').length > 0) {
-    res.send(`
-      <div style="display: flex;flex-direction: column;align-items: center;">
-        <img src="https://http.cat/400.jpg" width="750" height="600" style="background-color: black"></img>
-        <div>Expected argument seed= to have binary format (0 for vowel, 1 for consonant) but get "${req.params.seed}"</div>
-      </div>
-    `);
-    res.status(400).end();
-  }
-  else {
-    // All OK, Creating response the object
-    res.status(200)
-    let random_names = []
-
-    for (let i = 0; i < req.params.num; i++) {
-      let name = generator.generateNameFromSeed(req.params.seed);
+    return random_names;
+  },
+  option2: (quantity, min_length, max_length) => {
+    let random_names = [];
+    for (let i = 0; i < quantity; i++) {
+      let name = generator.generateName(Number(min_length), Number(max_length), '');
       random_names.push({
-        seed: req.params.seed,
+        seed: generator.getSeedFormat(name),
         name: name
       });
     }
-    res.json(random_names)
+    return random_names;
+  },
+  option3: (quantity, seed) => {
+    let random_names = [];
+    for (let i = 0; i < quantity; i++) {
+      let name = generator.generateNameFromSeed(seed);
+      random_names.push({
+        seed: seed,
+        name: name
+      });
+    }
   }
+};
+app.get('/api/v1.0/names', (req, res) => {
 
+  let isBadRequest = false;
+  let random_names = [];
+  const {quantity, seed, min_length, max_length, length} = req.query
+
+  if (isNaN(quantity) || (quantity < 1 || quantity > 100)) isBadRequest = true;
+
+  // Names request [option 1]
+  if ((quantity && length) && (min_length === undefined && max_length == undefined && seed === undefined)) {
+
+    if (isNaN(length)) isBadRequest = true;
+    else random_names = GET_NAMES['option1'](quantity, length);
+  }
+  // Names request [option 2]
+  else if ((quantity && min_length && max_length) && (seed === undefined && length === undefined)) {
+
+    if (isNaN(min_length) || isNaN(max_length)) isBadRequest = true;
+    else if (Number(min_length) > Number(max_length)) isBadRequest = true;
+    else random_names = GET_NAMES['option2'](quantity, min_length, max_length);
+  }
+  // Names request [option 3]
+  else if ((quantity && seed) && (min_length === undefined && max_length == undefined && length === undefined)) {
+
+    if (seed.split('').filter(letter => letter !== '0' && letter !== '1').length > 0) isBadRequest = true;
+    else random_names = GET_NAMES['option3'](quantity, seed);
+  }
+  else isBadRequest = true
+
+  console.log('Request query:', req.query);
+
+  if (isBadRequest) res.status(400).json([]) // bad request http code
+  else res.status(200).json(random_names); // ok 👍
 });
 
 // Final middleware (404 error)
