@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "start": "node index.js",
     "deploy-heroku": "heroku git:remote -a nombrais",
-    "config-heroku": "heroku config:set NODE_MODULES_CACHE=false",
+    "restart-heroku": "heroku restart",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "leflores-fisi",
@@ -29,5 +29,4 @@
   "engines": {
     "node": "16.x"
   }
-
 }
